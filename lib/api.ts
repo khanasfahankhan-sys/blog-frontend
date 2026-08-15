@@ -87,7 +87,33 @@ export interface AuthResponse {
   user: User;
 }
 
+export interface PublicPostsResponse {
+  posts: Post[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
 export const api = {
+  listPublicPosts: (params: {
+    tag?: string;
+    search?: string;
+    page?: number;
+    limit?: number;
+  } = {}) => {
+    const query = new URLSearchParams();
+    if (params.tag) query.set("tag", params.tag);
+    if (params.search) query.set("search", params.search);
+    if (params.page) query.set("page", String(params.page));
+    if (params.limit) query.set("limit", String(params.limit));
+    const qs = query.toString();
+    return apiFetch<PublicPostsResponse>(
+      `/api/posts/public${qs ? `?${qs}` : ""}`
+    );
+  },
+  getPublicPost: (slug: string) =>
+    apiFetch<Post>(`/api/posts/public/${slug}`),
   login: (email: string, password: string) =>
     apiFetch<AuthResponse>("/api/auth/login", {
       method: "POST",
