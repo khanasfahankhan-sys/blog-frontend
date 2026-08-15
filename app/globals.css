@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .markdown h1 {
+    @apply mb-2 mt-4 text-2xl font-bold first:mt-0;
+  }
+  .markdown h2 {
+    @apply mb-2 mt-4 text-xl font-semibold first:mt-0;
+  }
+  .markdown h3 {
+    @apply mb-2 mt-3 text-lg font-semibold first:mt-0;
+  }
+  .markdown p {
+    @apply mb-3;
+  }
+  .markdown ul {
+    @apply mb-3 list-disc pl-5;
+  }
+  .markdown ol {
+    @apply mb-3 list-decimal pl-5;
+  }
+  .markdown blockquote {
+    @apply mb-3 border-l-4 border-gray-300 pl-3 italic text-gray-600;
+  }
+  .markdown code {
+    @apply rounded bg-gray-100 px-1 py-0.5 font-mono text-xs;
+  }
+  .markdown pre {
+    @apply mb-3 overflow-x-auto rounded-md bg-gray-100 p-3;
+  }
+  .markdown a {
+    @apply text-blue-600 underline;
+  }
+  .markdown hr {
+    @apply my-4 border-gray-200;
+  }
+}
